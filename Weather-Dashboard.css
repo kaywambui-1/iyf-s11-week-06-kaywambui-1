@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e8f0f7;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.weather-app {
+    background-color: white;
+    padding: 20px 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    text-align: center;
+    color: #2b6cb0;
+    font-size: 24px;
+}
+
+#search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#city-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#search-form button {
+    padding: 10px 15px;
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-form button:hover {
+    background-color: #2c5282;
+}
+
+#loading {
+    text-align: center;
+    color: #555;
+    margin: 10px 0;
+}
+
+.error {
+    background-color: #fed7d7;
+    color: #c53030;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.weather-main {
+    text-align: center;
+}
+
+.weather-main img {
+    width: 80px;
+    height: 80px;
+}
+
+#temperature {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+#description {
+    text-transform: capitalize;
+    color: #555;
+    margin-top: 0;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+}
+
+.detail span:first-child {
+    color: #888;
+    margin-bottom: 3px;
+}
+
+#recent-searches {
+    margin-top: 20px;
+}
+
+#recent-searches h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+#search-history {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#search-history li {
+    background-color: #edf2f7;
+    padding: 6px 10px;
+    border-radius: 15px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#search-history li:hover {
+    background-color: #e2e8f0;
+}
+
+.hidden {
+    display: none;
+}
