@@ -32,21 +32,50 @@ function displayUsers(users) {
         usersContainer.appendChild(userCard);
     });
 }
+function updateUsers() {
+    let filtered = [...allUsers];
+
+    // Search
+    const query = searchInput.value.toLowerCase();
+    filtered = filtered.filter(user =>
+        user.name.toLowerCase().includes(query) ||
+        user.email.toLowerCase().includes(query)
+    );
+
+    // Filter by city
+    if (citySelect.value !== "") {
+        filtered = filtered.filter(user =>
+            user.address.city === citySelect.value
+        );
+    }
+
+    // Sort
+    if (sortSelect.value === "az") {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortSelect.value === "za") {
+        filtered.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    displayUsers(filtered);
+}
 
 async function init() {
     allUsers = await fetchUsers();
     displayUsers(allUsers);
 
-    searchInput.addEventListener("input", (event) => {
-        const query = event.target.value.toLowerCase();
+    const cities = [...new Set(allUsers.map(user => user.address.city))];
 
-        const filtered = allUsers.filter(user =>
-            user.name.toLowerCase().includes(query) ||
-            user.email.toLowerCase().includes(query)
-        );
+cities.forEach(city => {
+    const option = document.createElement("option");
+    option.value = city;
+    option.textContent = city;
+    citySelect.appendChild(option);
+});
 
-        displayUsers(filtered);
-    });
+    searchInput.addEventListener("input", updateUsers);
+sortSelect.addEventListener("change", updateUsers);
+citySelect.addEventListener("change", updateUsers);
 }
 
 init();
+
